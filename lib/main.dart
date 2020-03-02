@@ -55,6 +55,13 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
+  void _resetQuiz() {
+    setState(() {
+      _questionIndex = 0;
+      _totalScore = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     //var questions = ['Colore preferito?', 'Animale preferito?'];
@@ -69,7 +76,10 @@ class _MyAppState extends State<MyApp> {
                 questions: _questions,
                 questionIndex: _questionIndex,
                 answerQuestion: _answerQuestion)
-            : Result(resultScore: _totalScore,),
+            : Result(
+                resultScore: _totalScore,
+                resetQuiz: _resetQuiz
+              ),
       ),
     );
   }
